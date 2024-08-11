@@ -13,7 +13,7 @@ const searchButton = document.querySelector("button");
 const inputBox = document.querySelector("input");
 const listItems = document.querySelectorAll("li");
 
-const showProducts = (products) => {
+const renderProducts = (products) => {
   mainContent.innerHTML = "";
   products.forEach((product) => {
     const jsx = `
