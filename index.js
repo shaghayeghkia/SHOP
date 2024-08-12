@@ -13,7 +13,7 @@ const searchButton = document.querySelector("button");
 const inputBox = document.querySelector("input");
 const listItems = document.querySelectorAll("li");
 
-const renderProducts = (products) => {
+const showProducts = (products) => {
   mainContent.innerHTML = "";
   products.forEach((product) => {
     const jsx = `
@@ -55,7 +55,8 @@ const init = async () => {
   showProducts(allProducts);
 };
 
-const filteredProducts = () => {
+const filterProducts = () => {
+  // let filteredProducts = null;
   const filteredProducts = allProducts.filter((product) => {
     if (category === "all") {
       return product.title.toLowerCase().includes(search);
@@ -71,11 +72,10 @@ const filteredProducts = () => {
 
 const searchHandler = () => {
   search = inputBox.value.trim().toLowerCase();
-  filteredProducts();
+  filterProducts();
 };
 
 const filterHandler = (event) => {
-  console.log(event);
   category = event.target.innerText.toLowerCase();
 
   listItems.forEach((li) => {
@@ -86,7 +86,7 @@ const filterHandler = (event) => {
     }
   });
 
-  filteredProducts();
+  filterProducts();
 };
 
 document.addEventListener("DOMContentLoaded", init);
